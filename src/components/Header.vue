@@ -52,13 +52,28 @@ export default {
         max-width: 550px;
     }
 
-    @media only screen and (max-width: 600px) {
+@media only screen and (max-width: 840px) {
     .header-container {
         flex-direction: column;
-        min-width: 320px;
+        width: 100%;
+        min-width: 280px;
     }
     .header-item:nth-child(2) {
-        margin: 16px 0 16px 0;
+        margin: 16px 0 20px 0;
+    }
+
+    .header-item:nth-child(2) {
+        width: 90%;
+    }
+
+    .header-container img {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .header {
+        padding: 0 10px;
     }
 }
 </style>

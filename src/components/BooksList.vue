@@ -1,8 +1,11 @@
 <template>
-  <div class="list-book">
-      <div v-for="(book, index) in books" :key="index">
-          <Book :name="book.name" :author="book.author" :image="book.image" @on-button-click="onClick()"/>
-      </div>
+  <div>
+    <h2>Каталог книг</h2>
+    <div class="list-book">
+        <div v-for="(book, index) in books" :key="index">
+            <Book :name="book.name" :author="book.author" :image="book.image" @on-button-click="onClick($event)"/>
+        </div>
+    </div>
   </div>
 </template>
 
@@ -24,22 +27,39 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .list-book {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    width: 70%;
     min-width: 600px;
     margin: 0 auto;
 }
 
-@media only screen and (max-width: 600px) {
+h2 {
+    font-family: Montserrat;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 52px;
+    letter-spacing: 0px;
+    text-align: left;
+    margin-left: 10%;
+    margin-top: 60px;
+    margin-bottom: 80px;
+}
+
+@media only screen and (max-width: 840px) {
     .list-book {
         flex-direction: column;
-        min-width: 320px;
+        flex-wrap: nowrap;
+        min-width: 280px;
         width: 100%;
+    }
+    h2 {
+        text-align: center;
+        margin-left: 0;
     }
 }
 </style>

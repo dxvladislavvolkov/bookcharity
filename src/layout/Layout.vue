@@ -1,22 +1,28 @@
 <template>
     <Header />
-    <!-- <ModalWindow :visible="visible" /> -->
+    <ModalWindow :visible="visible" :data="bookData" @closeModal="onClose" />
     <Description />
+    <Info />
+    <CharityRules />
     <BooksList :books="books" @onButtonClick="openModal" />
 </template>
 
 <script>
 import Header from "../components/Header";
 import BooksList from "../components/BooksList";
-// import ModalWindow from "../components/ModalBook";
+import ModalWindow from "../components/ModalBook";
+import CharityRules from "../components/CharityRule";
 import Description from "../components/Description";
+import Info from "../components/Info";
 import { ref, onMounted, computed } from "vue";
 export default {
     components: {
         Header,
         BooksList,
-        Description
-        // ModalWindow
+        Info,
+        Description,
+        CharityRules,
+        ModalWindow
     },
     props: {
         title: String
@@ -80,12 +86,17 @@ export default {
     },
     data() {
         return {
-            visible: false
+            visible: false,
+            bookData: {}
         }
     },
     methods: {
-        openModal() {
+        onClose() {
+            this.visible = false;
+        },
+        openModal(e) {
             this.visible = true;
+            this.bookData = e;
 
         },
         count() {
