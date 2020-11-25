@@ -2,7 +2,7 @@
   <div id="header">
     <div class="header-container">
         <img class="header-item" src="../assets/BookCharity.svg">
-        <Search class="header-item" />
+        <Search class="header-item" @onSearch="onSearch($event)" />
     </div>
   </div>
 </template>
@@ -12,6 +12,11 @@ import Search from "./Search";
 export default {
     components: {
         Search
+    },
+    methods: {
+        onSearch(e) {
+            this.$emit("on-search", e);
+        }
     }
 
 }

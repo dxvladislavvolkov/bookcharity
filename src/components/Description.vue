@@ -3,8 +3,8 @@
         <div class="description-text">
             <div>СТАРТ 29 НОЯБРЯ</div>
             <h2>Благотоворительная распродажа книг</h2>
-            <p>Вы покупаете книгу в отличном состоянии по цене, которую выбираете сами + делаете доброе дело и спасаете жизни.</p>
-            <button type="button" class="btn btn-secondary">Перейти к книгам</button>
+            <p>Вы покупаете книгу по цене, которую выбираете сами, + делаете доброе дело, помогая бездомным животным!</p>
+            <button type="button" class="btn btn-secondary" @click="scrollTo('books')">Перейти к книгам</button>
         </div>
         <div class="image-container">
             <div class="image"></div>
@@ -14,7 +14,16 @@
 
 <script>
 export default {
-
+    methods: {
+        scrollTo(hashtag) {
+            let slide = document.getElementById(hashtag);
+            let top = window.scrollY + slide.getBoundingClientRect().y;
+            window.scrollTo({
+                top: top,
+                behavior: 'smooth'
+            });
+        }
+    }
 }
 </script>
 
@@ -129,8 +138,12 @@ export default {
     margin-top: 20px;
     margin-bottom: 80px;
 }
+.image-container {
+    display: none;
+}
 }
 @media only screen and (max-width: 770px) {
+    .
     .description-text {
         padding-top: 60px;
     }

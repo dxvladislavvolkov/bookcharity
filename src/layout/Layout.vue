@@ -1,10 +1,10 @@
 <template>
-    <Header />
+    <Header @onSearch="onSearch($event)" />
     <ModalWindow :visible="visible" :data="bookData" @closeModal="onClose" />
     <Description />
     <Info />
     <CharityRules />
-    <BooksList :books="books" @onButtonClick="openModal" />
+    <BooksList v-model:books="books" @onButtonClick="openModal" />
 </template>
 
 <script>
@@ -42,7 +42,14 @@ export default {
         onMounted(updateCount);
         return {
             counter,
-            doubleCounter,
+            doubleCounter
+        };
+    },
+    data() {
+        return {
+            originData: [],
+            visible: false,
+            bookData: {},
             books: [
                 {
                     name: "Маленький принц",
@@ -65,7 +72,7 @@ export default {
                     author: "Антуан де Сент-Экзюпери",
                     image: require("../assets/book.jpg")
                 }, {
-                    name: "Маленький принц",
+                    name: "Маленький принц2",
                     author: "Антуан де Сент-Экзюпери",
                     image: require("../assets/book.jpg")
                 }, {
@@ -77,18 +84,15 @@ export default {
                     author: "Антуан де Сент-Экзюпери",
                     image: require("../assets/book.jpg")
                 }, {
-                    name: "Маленький принц",
+                    name: "вау",
                     author: "Антуан де Сент-Экзюпери",
                     image: require("../assets/book.jpg")
                 }
             ]
-        };
-    },
-    data() {
-        return {
-            visible: false,
-            bookData: {}
         }
+    },
+    mounted() {
+        this.originData = this.books;
     },
     methods: {
         onClose() {
@@ -99,8 +103,16 @@ export default {
             this.bookData = e;
 
         },
-        count() {
-            this.counter++;
+        onSearch(e) {
+            this.filterBooks(e);
+        },
+        filterBooks(value) {
+            if(!value) {
+                this.books = this.originData;
+            }
+            this.books = this.books.filter((book) => {
+                return book.name.indexOf(value) !== -1;
+            });
         }
     }
 

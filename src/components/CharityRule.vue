@@ -7,10 +7,10 @@
           </div>
           <div class="text">
               <div>
-                <p>Принцип её заключается в том, что @maggvlk продаёт книги, которые прочитала и и не захотела оставлять в своей библиотеке, за ту стоимость, которую ВЫ посчитаете достойной. Все деньги, полученные с продаж, она переведёт  в котятский приют <b>@spasionnye</b> . В прошлый раз мы собрали около <b>9000₽</b>!</p>
-                <p>Если вы желаете принять участие, предоставив безвозмездно собственные книги на продажу в помощь котикам, напишите ей об этом в Директ. Из других городов тоже можно!</p>
+                <p>Принцип её заключается в том, что мы продаём прочитанные книги за ту стоимость, которую ВЫ считаете для себя приемлемой. Все деньги, полученные с продаж, переводим на счет двух приютов для бездомных животных <b class="link" @click="onClick('https://vk.com/saved_to_live')">"Спасённые, чтобы жить"</b> и <b class="link" @click="onClick('https://vk.com/club189884687')">"Зверополис"</b>.</p>
+                <p>По всем вопросам вы можете связаться с <b class="link" @click="onClick('https://www.instagram.com/maggvlk/')">@maggvlk</b></p>
               </div>
-              <button type="button" class="btn btn-secondary" @click="onClick">Написать @maggvlk</button>
+              <button type="button" class="btn btn-secondary" @click="onClick('https://www.instagram.com/maggvlk/')">Написать @maggvlk</button>
           </div>
       </div>
   </div>
@@ -19,14 +19,17 @@
 <script>
 export default {
     methods: {
-        onClick() {
-            window.open("https://www.instagram.com/maggvlk/");
+        onClick(link) {
+            window.open(link);
         }
     }
 }
 </script>
 
 <style scoped>
+.link {
+    cursor: pointer;
+}
 .rules {
     margin-left: 10%;
 }
@@ -36,7 +39,7 @@ export default {
     flex-direction: row;
 }
 p {
-    width: 610px;
+    width: 450px;
 }
 h2 {
     font-family: Montserrat;
@@ -59,8 +62,8 @@ h2 {
     font-weight: 400;
     line-height: 31px;
     letter-spacing: 0px;
-    text-align: left;
-    margin-left: 60px;
+    text-align: left;;
+    margin-left: 80px;
     margin-top: 20px;
 }
 
@@ -91,7 +94,7 @@ h2 {
         width: 550px;
     }
 }
-@media only screen and (max-width: 1265px) {
+@media only screen and (max-width: 1283px) {
     p {
         max-width: 610px;
         text-align: center;
@@ -123,7 +126,7 @@ h2 {
         width: 80%;
     }
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 430px) {
     .text {
         padding: 0 10px;
     }
@@ -132,7 +135,7 @@ h2 {
         margin: 0 0 20px;
     }
     .text div {
-        margin: 0 5px;
+        margin: 0 10px;
     }
 }
 </style>

@@ -2,7 +2,7 @@
   <div class="info">
       <div class="info-item">
           <div class="name">Выгода</div>
-          <div class="desc">книга в отличном состоянии</div>
+          <div class="desc">книга по вашей цене</div>
       </div>
       <div class="info-item">
           <div class="name">29 ноября</div>

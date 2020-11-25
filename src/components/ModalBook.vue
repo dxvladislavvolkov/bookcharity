@@ -1,15 +1,17 @@
 <template>
   <div class="modal-content" v-if="visible">
-    <div>
+    <div class="header">
       <i class="custom-icon fas fa-times fa-lg" @click="onClose"></i>
     </div>
-    <div class="title text">{{data.author}}</div>
-    <div class="name text">{{data.name}}</div>
-    <div>
-      <img src="../assets/book.jpg" />
+    <div class="modal-body">
+      <div class="title text">{{data.author}}</div>
+      <div class="name text">{{data.name}}</div>
+      <div>
+        <img src="../assets/book.jpg" />
+      </div>
+      <div>{{data.description}}</div>
+      <button type="button" class="btn btn-secondary" @click="onClick">Написать @maggvlk</button>
     </div>
-    <div>{{data.description}}</div>
-    <button type="button" class="btn btn-secondary" @click="onClick">Написать @maggvlk</button>
   </div>
 </template>
 
@@ -41,7 +43,7 @@ export default {
     margin-right: auto;
 }
 
-.modal-content div:first-child {
+.modal-content .header {
   text-align: right;
   padding: 20px;
 }
@@ -105,6 +107,17 @@ img {
       top: 0;
       margin-left: 0;
       margin-right: 0;
+    }
+}
+
+@media only screen and (max-height: 800px) {
+    .modal-content {
+      top: 0;
+      height: 100%;
+    }
+    .modal-body {
+      max-height: 95%;
+      overflow-y: auto;
     }
 }
 </style>
