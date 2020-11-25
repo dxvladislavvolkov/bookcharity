@@ -32,7 +32,7 @@ export default {
     flex: 2;
 }
 .image {
-    background-image: url("../assets/description-image.png");
+    background-image: url("../assets/description-image.jpg");
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
@@ -143,7 +143,6 @@ export default {
 }
 }
 @media only screen and (max-width: 770px) {
-    .
     .description-text {
         padding-top: 60px;
     }

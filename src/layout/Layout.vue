@@ -111,7 +111,7 @@ export default {
                 this.books = this.originData;
             }
             this.books = this.books.filter((book) => {
-                return book.name.indexOf(value) !== -1;
+                return book.name.toLowerCase().indexOf(value.toLowerCase()) !== -1;
             });
         }
     }

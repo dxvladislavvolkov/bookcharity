@@ -1,6 +1,6 @@
 <template>
     <div id="search">
-        <input type="text" placeholder="Введите название книги" class="form-control form-control-sm search" v-model="searchValue" />
+        <input type="text" placeholder="Введите название книги" @keyup.enter="onClick(searchValue)" class="form-control form-control-sm search" v-model="searchValue" />
         <input class="btn btn-secondary" type="button" value="Найти" @click="onClick(searchValue)"/>
     </div>
 </template>
@@ -15,7 +15,13 @@ export default {
     methods: {
         onClick(value) {
             this.$emit("on-search", value);
-        }
+            let slide = document.getElementById("books");
+            let top = window.scrollY + slide.getBoundingClientRect().y;
+            window.scrollTo({
+                top: top,
+                behavior: "smooth"
+            });
+        },
     }
 }
 </script>
