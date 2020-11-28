@@ -12,6 +12,7 @@
       <div class="additions">
         <div>Обложка: {{data.bookData.c}}</div>
         <div>Состояние: {{data.bookData.s}}</div>
+        <div>Язык: {{data.bookData.l}}</div>
         <div>Город: {{data.bookData.g}}</div>
       </div>
       <button type="button" class="btn btn-secondary" @click="onClick">Написать @maggvlk</button>
