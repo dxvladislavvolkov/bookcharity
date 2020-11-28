@@ -4,6 +4,7 @@
     <Description />
     <Info />
     <CharityRules />
+    <Result :count="count" />
     <BooksList v-if="books.length" v-model:books="books" @onButtonClick="openModal" />
 </template>
 
@@ -13,6 +14,7 @@ import BooksList from "../components/BooksList";
 import ModalWindow from "../components/ModalBook";
 import CharityRules from "../components/CharityRule";
 import Description from "../components/Description";
+import Result from "../components/Result";
 import Info from "../components/Info";
 import { ref, onMounted, computed } from "vue";
 import axios from "axios";
@@ -23,6 +25,7 @@ export default {
         Info,
         Description,
         CharityRules,
+        Result,
         ModalWindow
     },
     props: {
@@ -46,6 +49,7 @@ export default {
             originData: [],
             visible: false,
             bookData: {},
+            count: 0,
             books: []
         }
     },
@@ -58,6 +62,7 @@ export default {
                 return book.p === 0;
             });
             const soldBooks = data.filter((book) => {
+                this.count += book.p;
                 return book.p !== 0;
             });
             this.originData = [...freeBooks, ...soldBooks];
