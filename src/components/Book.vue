@@ -1,11 +1,12 @@
 <template>
-  <div class="book" @click="openModal(bookData, bookId)">
+  <div class="book" v-bind:class="{ 'book-sold': bookData.p !== 0 }" @click="openModal(bookData, bookId)">
         <div class="author text">{{bookData.a}}</div>
         <div class="image-container">
             <img :src="require('../assets/site_images/'+ bookId + '.jpg')" />
         </div>
         <p class="name text">{{bookData.n}}</p>
-      <div class="link" @click="openModal(bookData, image)">Посмотреть<i class="arrow fas fa-long-arrow-alt-right"></i></div>
+      <div v-if="bookData.p === 0" class="link" @click="openModal(bookData, image)">Посмотреть<i class="arrow fas fa-long-arrow-alt-right"></i></div>
+      <p v-if="bookData.p !== 0" class="sold">Куплена</p>
   </div>
 </template>
 
@@ -24,7 +25,9 @@ export default {
     },
     methods: {
         openModal(bookData, bookId) {
-            this.$emit("on-button-click", { bookData, bookId })
+            if(bookData.p === 0) {
+                this.$emit("on-button-click", { bookData, bookId })
+            }
         }
     }
 
@@ -46,6 +49,26 @@ export default {
   transition: 1s;
   transform: scale(1);
   opacity: 1;
+}
+
+.book-sold {
+    opacity: 0.6;
+}
+
+.book-sold:first-child:hover{
+    transition: 0s;
+    transform: scale(1);
+    opacity: 0.6;
+}
+
+.book-sold:not(:hover) {
+  transition: 0s;
+  transform: scale(1);
+  opacity: 0.6;
+}
+
+.book-sold img {
+  cursor: auto;
 }
 
 .text {
@@ -82,6 +105,11 @@ export default {
     width: fit-content;
     margin-bottom: 5px;
     cursor: pointer;
+}
+
+.sold {
+   color: #A38970;
+   margin-bottom: 5px;
 }
 
 .link:hover {

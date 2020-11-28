@@ -49,11 +49,18 @@ export default {
             books: []
         }
     },
-    mounted() {
+    created() {
         axios.get('https://book-charity-server.herokuapp.com/getBooks')
         // axios.get('http://localhost:3000/getBooks')
         .then((response) => {
-            this.originData = response.data.books;
+            const data = response.data.books;
+            const freeBooks = data.filter((book) => {
+                return book.p === 0;
+            });
+            const soldBooks = data.filter((book) => {
+                return book.p !== 0;
+            });
+            this.originData = [...freeBooks, ...soldBooks];
             this.books = this.originData;
         })
         .catch(function (error) {
