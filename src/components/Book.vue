@@ -1,6 +1,6 @@
 <template>
   <div class="book" v-bind:class="{ 'book-sold': bookData.p !== 0 }" @click="openModal(bookData, bookId)">
-        <div class="author text">№{{bookData.id + 1}} {{bookData.a}}</div>
+        <div class="author text">{{bookData.a}}</div>
         <div class="image-container">
             <img :src="require('../assets/site_images/'+ bookId + '.jpg')" />
         </div>
