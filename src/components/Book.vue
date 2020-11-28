@@ -1,7 +1,9 @@
 <template>
   <div class="book" @click="openModal(bookData, bookId)">
         <div class="author text">{{bookData.a}}</div>
-        <img :src="require('../assets/site_images/'+ bookId + '.jpg')" />
+        <div class="image-container">
+            <img :src="require('../assets/site_images/'+ bookId + '.jpg')" />
+        </div>
         <p class="name text">{{bookData.n}}</p>
       <div class="link" @click="openModal(bookData, image)">Посмотреть<i class="arrow fas fa-long-arrow-alt-right"></i></div>
   </div>
@@ -58,21 +60,28 @@ export default {
     font-size: 28px;
     font-weight: 500;
     line-height: 36px;
-    width: 80%
+    width: 80%;
+    min-height: 70px;
+}
 
+.image-container {
+    width: 230px;
+    height: 360px;
+    margin: 42px auto;
 }
 
 .name {
     font-size: 20px;
     font-weight: 500;
     line-height: 26px;
+    min-height: 78px;
 }
 
 .link {
     border-bottom: 1px solid #000;
     width: fit-content;
     padding-bottom: 10px;
-    margin-top: 80px;
+    margin-top: 10%;
     cursor: pointer;
 }
 
@@ -83,7 +92,6 @@ export default {
 
 img {
     width: 230px;
-    margin: 42px 0;
     cursor: pointer;
 }
 
@@ -92,9 +100,7 @@ img {
     padding: 20px;
 }
 @media only screen and (max-width: 840px) {
-img {
-    width: 60%;
-}
+
 .book {
     width: 95%;
     padding: 20px 10px;
@@ -102,9 +108,23 @@ img {
 .text {
         margin-left: 10%;
     }
-    .link {
-        margin-top: 40px;
-        margin-left: 10%;
+.link {
+    margin-top: 40px;
+    margin-left: 10%;
+}
+}
+
+@media only screen and (max-width: 500px) {
+    img {
+        width: 60%;
+    }
+    .author {
+        min-height: auto;
+    }
+
+    .image-container {
+        width: 100%;
+        height: 100%;
     }
 }
 
