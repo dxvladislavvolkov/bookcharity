@@ -67,7 +67,7 @@ export default {
 .image-container {
     width: 230px;
     height: 360px;
-    margin: 42px auto;
+    margin: 0px auto 42px auto;
 }
 
 .name {
@@ -81,7 +81,7 @@ export default {
     border-bottom: 1px solid #000;
     width: fit-content;
     padding-bottom: 10px;
-    margin-top: 10%;
+    margin-bottom: 10%;
     cursor: pointer;
 }
 
