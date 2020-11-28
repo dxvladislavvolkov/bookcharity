@@ -26,9 +26,6 @@ export default {
     margin-top: 30px;
 }
 
-.result-container div {
-    margin-bottom: 20px;
-}
 .text {
     font-family: Montserrat;
     font-style: normal;

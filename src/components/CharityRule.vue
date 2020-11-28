@@ -8,7 +8,7 @@
           <div class="text">
               <div>
                 <p>Принцип её заключается в том, что мы продаём прочитанные книги за ту стоимость, которую ВЫ считаете для себя приемлемой. Все деньги, полученные с продаж, переводим на счет двух приютов для бездомных животных <b class="link" @click="onClick('https://vk.com/saved_to_live')">"Спасённые, чтобы жить"</b> и <b class="link" @click="onClick('https://vk.com/club189884687')">"Зверополис"</b>.</p>
-                <p>По всем вопросам вы можете связаться с <b class="link" @click="onClick('https://www.instagram.com/maggvlk/')">@maggvlk</b></p>
+                <p>Для того чтобы купить книгу, вам необходимо написать название книги <b class="link" @click="onClick('https://www.instagram.com/maggvlk/')">@maggvlk</b>. После совершения оплаты вы связываетесь с продавцом напрямую, чтобы договориться о месте передачи книге или деталях получения. Просим обратить Ваше внимание, что часть книг находятся в разных городах, из-за чего необходимо учитывать стоимость доставки, которая дополнительно оплачивается Вами.</p>
               </div>
               <button type="button" class="btn btn-secondary" @click="onClick('https://www.instagram.com/maggvlk/')">Написать @maggvlk</button>
           </div>
@@ -38,9 +38,6 @@ export default {
     flex-wrap: wrap;
     flex-direction: row;
 }
-p {
-    width: 450px;
-}
 h2 {
     font-family: Montserrat;
     font-size: 40px;
@@ -68,7 +65,7 @@ h2 {
 }
 
 .text div {
-    max-width: 610px;
+    max-width: 655px;
 }
 .btn {
     width: 240px;
@@ -94,7 +91,7 @@ h2 {
         width: 550px;
     }
 }
-@media only screen and (max-width: 1283px) {
+@media only screen and (max-width: 1400px) {
     p {
         max-width: 610px;
         text-align: center;
