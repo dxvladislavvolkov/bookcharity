@@ -37,6 +37,10 @@ export default {
     margin: 0 auto;
 }
 
+.list-book div{
+    margin-bottom: 20px;
+}
+
 h2 {
     font-family: Montserrat;
     font-size: 40px;

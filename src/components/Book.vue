@@ -38,7 +38,7 @@ export default {
 
 .book:first-child:hover  {
   transition: 1s;
-  transform: scale(1.01);
+  transform: scale(1.02);
   opacity: 0.8;
 }
 
@@ -80,7 +80,7 @@ export default {
 .link {
     border-bottom: 1px solid #000;
     width: fit-content;
-    margin-bottom: 10%;
+    margin-bottom: 5px;
     cursor: pointer;
 }
 
@@ -95,14 +95,18 @@ img {
 }
 
 .book {
+    background-color: #F8F6F4;
     width: 410px;
     padding: 20px;
+    margin: 0 5px;
+    margin-bottom: 15px;
 }
 @media only screen and (max-width: 840px) {
 
 .book {
-    width: 95%;
+    width: 90%;
     padding: 20px 10px;
+    margin: 0 auto;
 }
 .text {
         margin-left: 10%;
@@ -114,6 +118,9 @@ img {
 }
 
 @media only screen and (max-width: 500px) {
+    .book {
+        width: 100%;
+    }
     img {
         width: 60%;
     }
