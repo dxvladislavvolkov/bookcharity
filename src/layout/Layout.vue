@@ -50,8 +50,8 @@ export default {
         }
     },
     created() {
-        // axios.get('https://book-charity-server.herokuapp.com/getBooks')
-        axios.get('http://localhost:3000/getBooks')
+        axios.get('https://book-charity-server.herokuapp.com/getBooks')
+        // axios.get('http://localhost:3000/getBooks')
         .then((response) => {
             const data = response.data.books;
             const freeBooks = data.filter((book) => {
