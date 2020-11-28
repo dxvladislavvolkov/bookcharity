@@ -61,13 +61,13 @@ export default {
     font-weight: 500;
     line-height: 36px;
     width: 80%;
-    min-height: 70px;
+    min-height: 95px;
 }
 
 .image-container {
-    width: 230px;
-    height: 360px;
-    margin: 0px auto 42px auto;
+    width: 160px;
+    height: 290px;
+    margin: 0px auto 20px auto;
 }
 
 .name {
@@ -80,7 +80,6 @@ export default {
 .link {
     border-bottom: 1px solid #000;
     width: fit-content;
-    padding-bottom: 10px;
     margin-bottom: 10%;
     cursor: pointer;
 }
@@ -91,12 +90,12 @@ export default {
 }
 
 img {
-    width: 230px;
+    width: 160px;
     cursor: pointer;
 }
 
 .book {
-    width: 480px;
+    width: 410px;
     padding: 20px;
 }
 @media only screen and (max-width: 840px) {
@@ -109,7 +108,7 @@ img {
         margin-left: 10%;
     }
 .link {
-    margin-top: 40px;
+    margin-top: 0;
     margin-left: 10%;
 }
 }
@@ -123,6 +122,7 @@ img {
     }
 
     .image-container {
+        margin: 42px auto;
         width: 100%;
         height: 100%;
     }
@@ -133,7 +133,7 @@ img {
         margin-left: 10%;
     }
     .link {
-        margin-top: 40px;
+        margin-top: 0;
         margin-left: 10%;
     }
 }

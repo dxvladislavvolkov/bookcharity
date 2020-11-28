@@ -128,6 +128,9 @@ img {
 }
 
 @media only screen and (max-height: 800px) {
+    .modal-content {
+      height: 100%;
+    }
     .modal-body {
       max-height: 95%;
       overflow-y: auto;
