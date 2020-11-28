@@ -50,8 +50,8 @@ export default {
         }
     },
     mounted() {
-        // axios.get('https://book-charity-server.herokuapp.com/getBooks')
-        axios.get('http://localhost:3000/getBooks')
+        axios.get('https://book-charity-server.herokuapp.com/getBooks')
+        // axios.get('http://localhost:3000/getBooks')
         .then((response) => {
             this.originData = response.data.books;
             this.books = this.originData;

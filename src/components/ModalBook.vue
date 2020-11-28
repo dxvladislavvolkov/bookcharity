@@ -6,7 +6,7 @@
     <div class="modal-body">
       <div class="title text">{{data.bookData.a}}</div>
       <div class="name text">{{data.bookData.n}}</div>
-      <div>
+      <div class="image-container">
         <img :src="require('../assets/state/'+ data.bookId + '.jpg')" />
       </div>
       <div class="additions">
@@ -41,10 +41,12 @@ export default {
     z-index: 1001;
     width: 760px;
     position: fixed;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
+    left: 50%;
+    top: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
 }
 
 .additions div{
@@ -71,6 +73,10 @@ i {
 img {
   width: 280px;
   margin-top: 25px;
+}
+
+.image-container {
+  min-height: 373px;
 }
 
 .text {
@@ -116,21 +122,12 @@ img {
 
 @media only screen and (max-width: 840px) {
     .modal-content {
-      z-index: 1001;
       width: 100%;
       height: 100%;
-      position: fixed;
-      top: 0;
-      margin-left: 0;
-      margin-right: 0;
     }
 }
 
 @media only screen and (max-height: 800px) {
-    .modal-content {
-      top: 0;
-      height: 100%;
-    }
     .modal-body {
       max-height: 95%;
       overflow-y: auto;
