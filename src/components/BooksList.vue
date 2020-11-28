@@ -3,7 +3,7 @@
     <h2 id="books">Каталог книг</h2>
     <div class="list-book">
         <div v-for="(book, index) in books" :key="index">
-            <Book :name="book.name" :author="book.author" :image="book.image" @on-button-click="onClick($event)"/>
+            <Book :bookData="book" :bookId="book.id + 1" @on-button-click="onClick($event)"/>
         </div>
     </div>
   </div>

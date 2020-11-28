@@ -4,7 +4,7 @@
     <Description />
     <Info />
     <CharityRules />
-    <BooksList v-model:books="books" @onButtonClick="openModal" />
+    <BooksList v-if="books.length" v-model:books="books" @onButtonClick="openModal" />
 </template>
 
 <script>
@@ -15,6 +15,7 @@ import CharityRules from "../components/CharityRule";
 import Description from "../components/Description";
 import Info from "../components/Info";
 import { ref, onMounted, computed } from "vue";
+import axios from "axios";
 export default {
     components: {
         Header,
@@ -34,11 +35,6 @@ export default {
         const updateCount = () => {
             counter.value++;
         };
-
-        // watch(counter, (newValue) => {
-        //     doubleCounter.value = newValue * 2;
-        // })
-
         onMounted(updateCount);
         return {
             counter,
@@ -50,48 +46,20 @@ export default {
             originData: [],
             visible: false,
             bookData: {},
-            books: [
-                {
-                    name: "Маленький принц",
-                    author: "Антуан де Сент-Экзюпери",
-                    image: require("../assets/book.jpg")
-                }, {
-                    name: "Маленький принц",
-                    author: "Антуан де Сент-Экзюпери",
-                    image: require("../assets/book.jpg")
-                }, {
-                    name: "Маленький принц",
-                    author: "Антуан де Сент-Экзюпери",
-                    image: require("../assets/book.jpg")
-                }, {
-                    name: "Маленький принц",
-                    author: "Антуан де Сент-Экзюпери",
-                    image: require("../assets/book.jpg")
-                }, {
-                    name: "Маленький принц",
-                    author: "Антуан де Сент-Экзюпери",
-                    image: require("../assets/book.jpg")
-                }, {
-                    name: "Маленький принц2",
-                    author: "Антуан де Сент-Экзюпери",
-                    image: require("../assets/book.jpg")
-                }, {
-                    name: "Маленький принц",
-                    author: "Антуан де Сент-Экзюпери",
-                    image: require("../assets/book.jpg")
-                }, {
-                    name: "Маленький принц",
-                    author: "Антуан де Сент-Экзюпери",
-                    image: require("../assets/book.jpg")
-                }, {
-                    name: "вау",
-                    author: "Антуан де Сент-Экзюпери",
-                    image: require("../assets/book.jpg")
-                }
-            ]
+            books: []
         }
     },
     mounted() {
+        // axios.get('https://book-charity-server.herokuapp.com/getBooks')
+        axios.get('http://localhost:3000/getBooks')
+        .then((response) => {
+            this.originData = response.data.books;
+            this.books = this.originData;
+            // console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
         this.originData = this.books;
     },
     methods: {
@@ -111,7 +79,7 @@ export default {
                 this.books = this.originData;
             }
             this.books = this.originData.filter((book) => {
-                return book.name.toLowerCase().indexOf(value.toLowerCase()) !== -1;
+                return book.n.toLowerCase().indexOf(value.toLowerCase()) !== -1;
             });
         }
     }

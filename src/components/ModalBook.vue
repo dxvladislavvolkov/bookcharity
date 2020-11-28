@@ -4,12 +4,16 @@
       <i class="custom-icon fas fa-times fa-lg" @click="onClose"></i>
     </div>
     <div class="modal-body">
-      <div class="title text">{{data.author}}</div>
-      <div class="name text">{{data.name}}</div>
+      <div class="title text">{{data.bookData.a}}</div>
+      <div class="name text">{{data.bookData.n}}</div>
       <div>
-        <img src="../assets/book.jpg" />
+        <img :src="require('../assets/state/'+ data.bookId + '.jpg')" />
       </div>
-      <div>{{data.description}}</div>
+      <div class="additions">
+        <div>Обложка: {{data.bookData.c}}</div>
+        <div>Состояние: {{data.bookData.s}}</div>
+        <div>Город: {{data.bookData.g}}</div>
+      </div>
       <button type="button" class="btn btn-secondary" @click="onClick">Написать @maggvlk</button>
     </div>
   </div>
@@ -43,9 +47,21 @@ export default {
     margin-right: auto;
 }
 
+.additions div{
+  margin-top: 5px;
+}
+
 .modal-content .header {
   text-align: right;
   padding: 20px;
+}
+
+.additions {
+    width: 280px;
+    margin: 0 auto;
+    text-align: left;
+    padding-left: 20px;
+    padding-top: 20px;
 }
 
 i {
@@ -119,5 +135,13 @@ img {
       max-height: 95%;
       overflow-y: auto;
     }
+
+    .additions {
+        width: 280px;
+        margin: 0 auto;
+        padding-top: 20px;
+    }
+
+
 }
 </style>

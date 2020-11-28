@@ -1,9 +1,9 @@
 <template>
-  <div class="book" @click="openModal(name, author)">
-        <div class="author text">{{author}}</div>
-        <img :src="image" />
-        <p class="name text">{{name}}</p>
-      <div class="link" @click="openModal(name, author)">Посмотреть<i class="arrow fas fa-long-arrow-alt-right"></i></div>
+  <div class="book" @click="openModal(bookData, bookId)">
+        <div class="author text">{{bookData.a}}</div>
+        <img :src="require('../assets/site_images/'+ bookId + '.jpg')" />
+        <p class="name text">{{bookData.n}}</p>
+      <div class="link" @click="openModal(bookData, image)">Посмотреть<i class="arrow fas fa-long-arrow-alt-right"></i></div>
   </div>
 </template>
 
@@ -15,15 +15,14 @@ export default {
         }
     },
     props: {
-        name: String,
-        author: String,
-        image: String
+        bookData: Object,
+        bookId: Number
     },
     components: {
     },
     methods: {
-        openModal(name, author) {
-            this.$emit("on-button-click", { name, author })
+        openModal(bookData, bookId) {
+            this.$emit("on-button-click", { bookData, bookId })
         }
     }
 
