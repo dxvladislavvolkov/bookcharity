@@ -4,7 +4,7 @@
     <Description />
     <Info />
     <CharityRules />
-    <Result :count="count" />
+    <Result :count="count" :books="allBooks" :soldBooks="soldBooks" />
     <BooksList v-if="books.length" v-model:books="books" @onButtonClick="openModal" />
 </template>
 
@@ -48,6 +48,8 @@ export default {
             originData: [],
             visible: false,
             bookData: {},
+            allBooks: 0,
+            soldBooks: 0,
             count: 0,
             books: []
         }
@@ -64,6 +66,8 @@ export default {
                 this.count += book.p;
                 return book.p !== 0;
             });
+            this.allBooks = response.data.length;
+            this.soldBooks = soldBooks.length;
             this.originData = [...freeBooks, ...soldBooks];
             this.books = this.originData;
         })
