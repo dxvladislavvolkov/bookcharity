@@ -31,7 +31,7 @@ export default {
     props: {
         title: String
     },
-    setup(props) {
+    setup() {
         const counter = ref(1);
         const doubleCounter = computed(() => counter.value * 2);
         const updateCount = () => {
