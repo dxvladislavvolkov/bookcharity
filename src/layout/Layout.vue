@@ -57,7 +57,7 @@ export default {
         axios.get('https://book-charity-server.herokuapp.com/getBooks')
         // axios.get('http://localhost:3000/getBooks')
         .then((response) => {
-            const data = response.data.books;
+            const data = response.data;
             const freeBooks = data.filter((book) => {
                 return book.p === 0;
             });
