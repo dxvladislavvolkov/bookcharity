@@ -34,7 +34,6 @@ export default {
     setup(props) {
         const counter = ref(1);
         const doubleCounter = computed(() => counter.value * 2);
-        console.log(props);
         const updateCount = () => {
             counter.value++;
         };
