@@ -5,7 +5,7 @@
     <Info />
     <CharityRules />
     <Result :count="count" :books="allBooks" :soldBooks="soldBooks" />
-    <BooksList v-if="books.length" v-model:books="books" @onButtonClick="openModal" />
+    <BooksList v-if="books.length" v-model:books="books" :freeBooks="freeBooks" @onButtonClick="openModal" />
 </template>
 
 <script>
@@ -47,6 +47,7 @@ export default {
         return {
             originData: [],
             visible: false,
+            freeBooks: [],
             bookData: {},
             allBooks: 0,
             soldBooks: 0,
@@ -59,7 +60,7 @@ export default {
         // axios.get('http://localhost:3000/getBooks')
         .then((response) => {
             const data = response.data;
-            const freeBooks = data.filter((book) => {
+            this.freeBooks = data.filter((book) => {
                 return book.p === 0;
             });
             const soldBooks = data.filter((book) => {
@@ -68,7 +69,7 @@ export default {
             });
             this.allBooks = response.data.length;
             this.soldBooks = soldBooks.length;
-            this.originData = [...freeBooks, ...soldBooks];
+            this.originData = [...this.freeBooks, ...soldBooks];
             this.books = this.originData;
         })
         .catch(function (error) {

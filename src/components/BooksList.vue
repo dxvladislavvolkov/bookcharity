@@ -1,8 +1,9 @@
 <template>
   <div>
     <h2 id="books">Каталог книг</h2>
+    <Toolbar :filterData="filterData" @applyFilter="onApplyFilter($event)"></ToolBar>
     <div class="list-book">
-        <div v-for="(book, index) in books" :key="index">
+        <div v-for="(book, index) in bookList" :key="index">
             <Book :bookData="book" :bookId="book.id + 1" @on-button-click="onClick($event)"/>
         </div>
     </div>
@@ -11,16 +12,76 @@
 
 <script>
 import Book from "./Book";
+import Toolbar from "./ToolBar";
 export default {
     props: {
-        books: Array
+        books: Array,
+        freeBooks: Array
+    },
+    data() {
+        return {
+            filteredBooks: [],
+            normalizedBooks: [],
+            filterData: {}
+        }
+    },
+    created() {
+        this.normalizedBooks = this.books;
+        this.filteredBooks = this.freeBooks;
+        let authors = new Set();
+        let langs = new Set();
+        let cities = new Set();
+        this.filteredBooks.forEach((book) => {
+            if(book.a && book.a !== " ") {
+                authors.add(book.a);
+            }
+            if(book.l && book.l !== " ") {
+                langs.add(book.l)
+            }
+            if(book.g && book.g !== " ") {
+                cities.add(book.g)
+            }
+        });
+        authors = [ ...authors ];
+        langs = [ ...langs ];
+        cities = [ ...cities ];
+        this.filterData = { authors: authors.sort(), langs, cities };
+    },
+    computed: {
+        bookList: function() {
+            return this.normalizedBooks;
+        }
     },
     components: {
+        Toolbar,
         Book
     },
     methods: {
         onClick(e) {
             this.$emit("on-button-click", e)
+        },
+        onApplyFilter(e) {
+            if(!e.checkedNames.length && !e.checkedLangs.length && !e.checkedCities.length) {
+                this.normalizedBooks = this.books;
+                return;
+            }
+            let books = this.filteredBooks;
+            if(e.checkedNames && e.checkedNames.length) {
+                books = books.filter((book) => {
+                    return e.checkedNames.some(name => name === book.a);
+                });
+            }
+            if(e.checkedCities && e.checkedCities.length) {
+                books = books.filter((book) => {
+                    return e.checkedCities.some(name => name === book.g);
+                });
+            }
+            if(e.checkedLangs && e.checkedLangs.length) {
+                books = books.filter((book) => {
+                    return e.checkedLangs.some(name => name === book.l);
+                });
+            }
+            this.normalizedBooks = books;
         }
     }
 
@@ -51,7 +112,6 @@ h2 {
     text-align: left;
     margin-left: 10%;
     margin-top: 60px;
-    margin-bottom: 80px;
 }
 
 @media only screen and (max-width: 840px) {
