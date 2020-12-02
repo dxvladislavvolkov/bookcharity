@@ -47,6 +47,14 @@ export default {
         cities = [ ...cities ];
         this.filterData = { authors: authors.sort(), langs, cities };
     },
+    watch: {
+        books: {
+            handler(val) {
+                this.normalizedBooks = val;
+            },
+        deep: true
+    },
+    },
     computed: {
         bookList: function() {
             return this.normalizedBooks;
