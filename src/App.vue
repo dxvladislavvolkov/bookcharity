@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import Layout from './layout/Layout'
+import Layout from './layout/Sold'
 
 export default {
   name: 'App',

@@ -1,16 +1,12 @@
 <template>
   <div class="result-container">
-      <div>
+      <div class="result">
           <span class="curency text">{{count}}</span><span class="undertext text">руб.</span>
           <div class="undertext text">собрано</div>
       </div>
-      <!-- <div>
-          <span class="curency text">{{books}}</span><span class="undertext text"></span>
-          <div class="undertext text">всего книг</div>
-      </div> -->
-      <div>
+      <div class="result">
           <span class="curency text">{{soldBooks}}</span><span class="undertext text"></span>
-          <div class="undertext text">продано</div>
+          <div class="undertext text">продано книг</div>
       </div>
   </div>
 </template>
@@ -29,11 +25,12 @@ export default {
 <style scoped>
 .result-container {
     background-color: #F8F6F4;
-    height: 205px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
+    height: 100%;
+    margin-top: 55px;
+}
+
+.result {
+    display: inline-block;
 }
 
 .result-container div {
@@ -42,10 +39,6 @@ export default {
 
 .result-container div:nth-child(1) {
     border-right: 1px solid rgba(163, 137, 112, 0.6);
-}
-
-.result-container div:nth-child(2) {
-    /* border-right: 1px solid rgba(163, 137, 112, 0.6); */
 }
 
 .text {
@@ -73,10 +66,6 @@ export default {
     }
 
     .result-container div:nth-child(1) {
-        border-right: 0;
-    }
-
-    .result-container div:nth-child(2) {
         border-right: 0;
     }
 }
